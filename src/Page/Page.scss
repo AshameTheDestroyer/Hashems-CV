@@ -1,5 +1,13 @@
+@font-face {
+    font-family: CascadiaCode;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Cascadia Code"), url("https://fonts.cdnfonts.com/s/29131/Cascadia.woff") format("woff");
+}
+
 body {
     font-size: 1.8rem !important;
+    font-family: CascadiaCode, Consolas !important;
 
     position: relative;
 
