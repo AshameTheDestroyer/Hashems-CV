@@ -1,0 +1,149 @@
+@use "../index.scss";
+
+header {
+    $padding: 2em;
+
+    font-size: xx-small;
+
+    position: relative;
+
+    width: calc(100vw - $padding * 2);
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    place-content: center;
+    place-items: center start;
+
+    padding: $padding;
+
+    #main-displayer {
+        text-transform: uppercase;
+
+        display: grid;
+        grid-template-columns: 1fr auto;
+        place-content: center;
+        place-items: center;
+        gap: 3em;
+
+        #profile-picture {
+            $offset: 12.5;
+            $width: min(20em, max(12em, 15vmin));
+            $margin: min(3em, max(1em, 2vmin));
+
+            transform: rotate(45deg) translate($offset * 1%, $offset * 1%);
+
+            width: $width;
+
+            background-color: index.$fore-colour;
+
+            border: 0.8em solid index.$main-colour;
+            border-radius: 2em;
+
+            margin-left: $margin;
+            margin-right: $margin;
+            margin-bottom: calc($offset * $width / 100 + 0.5em);
+
+            aspect-ratio: 1;
+
+            overflow: hidden;
+
+            &::after {
+                $size: 100%;
+
+                content: "";
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg) scale(1.4);
+
+                width: $size;
+                height: $size;
+
+                background-image: url("../Images/personal_picture.jpg");
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+
+        h1 {
+            font-size: x-large;
+
+            display: flex;
+            flex-direction: column;
+            place-content: start center;
+            place-items: start center;
+
+            padding-bottom: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        p:last-child {
+            font-size: min(2.5em, max(1.6em, 1.5vw));
+            letter-spacing: 0.5ch;
+        }
+
+        q {
+            z-index: 1;
+        }
+    }
+
+    #information-displayer {
+        font-size: 1.2em;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        padding-left: max(0.5em, 2vw);
+
+        .placeholder .icon {
+            --icon-size: min(3em, max(1.5em, 2vw)) !important;
+            background-color: index.$main-colour;
+
+            padding: 0.5em;
+
+            z-index: 1;
+        }
+
+        #phone-displayer {
+            display: flex;
+            flex-direction: row;
+            place-content: center;
+            place-items: center;
+            gap: 0.65ch;
+        }
+    }
+
+    #floating-square {
+
+        &::before,
+        &::after {
+            $size: 50vmin;
+
+            content: "";
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -25%) rotate(45deg);
+
+            width: $size;
+            height: $size;
+        }
+
+        &::before {
+            background-color: index.$fore-colour;
+
+            filter: invert(1);
+
+            z-index: -1;
+        }
+
+        &::after {
+            background-color: index.$fore-colour;
+            mix-blend-mode: difference;
+        }
+    }
+}

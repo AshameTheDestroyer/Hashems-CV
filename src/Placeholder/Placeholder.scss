@@ -1,0 +1,82 @@
+@use "../index.scss";
+
+.placeholder {
+    width: fit-content;
+
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 1em;
+
+    .icon {
+        --icon-size: 5em;
+        --background-colour: transparent;
+        --apply-margin: 0;
+
+        position: relative;
+
+        width: var(--icon-size);
+        height: var(--icon-size);
+
+        background-color: var(--background-colour);
+
+        padding: 0.75em;
+        margin: calc(var(--apply-margin) * 0.75em);
+
+        border-radius: 100%;
+
+        aspect-ratio: 1;
+
+        .round-progress-bar {
+            --line-thickness: 0;
+            --line-colour: white;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: calc(var(--icon-size) * 2);
+            height: calc(var(--icon-size) * 2);
+
+            svg {
+                overflow: visible;
+
+                circle {
+                    $full-percentage: 170;
+
+                    --percentage: 0;
+
+                    fill: none;
+
+                    stroke-width: var(--line-thickness);
+                    stroke: var(--line-colour);
+
+                    stroke-dasharray: $full-percentage;
+                    stroke-dashoffset: $full-percentage;
+
+                    stroke-linecap: round;
+
+                    &:first-child {
+                        stroke-dashoffset: 0;
+
+                        opacity: 0.25;
+                    }
+
+                    &:last-child {
+                        stroke-dashoffset: calc($full-percentage - ($full-percentage * var(--percentage)) / 100);
+                    }
+                }
+            }
+        }
+
+        img {
+            $size: 100%;
+
+            width: $size;
+            height: $size;
+
+            z-index: 1;
+        }
+    }
+}
