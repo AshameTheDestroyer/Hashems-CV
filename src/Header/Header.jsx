@@ -29,7 +29,7 @@ function MainDisplayer() {
                     <p>Hashem</p>
                     <q>Wannous</q>
                 </h1>
-                <p>Web Developer</p>
+                <p>Frontend Developer</p>
             </div>
         </div>
     );
